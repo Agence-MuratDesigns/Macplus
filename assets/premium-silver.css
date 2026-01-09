@@ -145,70 +145,7 @@ h1.h0.revealed, h1.h1.revealed, h2.h1.revealed, h2.h2.revealed,
 }
 
 /* === SILVER BUTTON STYLES === */
-
-/* Primary button with metallic effect */
-.button--primary,
-button.button--primary,
-.btn-primary,
-.shopify-payment-button button {
-  background: var(--silver-gradient) !important;
-  background-size: 200% 100% !important;
-  border: 1px solid var(--silver-dark) !important;
-  color: #1a1a1a !important;
-  font-weight: 600 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.5px !important;
-  transition: all 0.4s var(--transition-smooth) !important;
-  position: relative !important;
-  overflow: hidden !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
-}
-
-.button--primary:hover,
-button.button--primary:hover,
-.btn-primary:hover,
-.shopify-payment-button button:hover {
-  background: var(--silver-gradient-hover) !important;
-  background-size: 200% 100% !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
-  border-color: var(--silver-light) !important;
-}
-
-/* Shine effect on hover */
-.button--primary::before,
-button.button--primary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  transition: left 0.5s ease;
-}
-
-.button--primary:hover::before,
-button.button--primary:hover::before {
-  left: 100%;
-}
-
-/* Secondary button */
-.button--secondary,
-button.button--secondary {
-  background: transparent !important;
-  border: 2px solid var(--silver-primary) !important;
-  color: #1a1a1a !important;
-  transition: all 0.3s var(--transition-smooth) !important;
-}
-
-.button--secondary:hover,
-button.button--secondary:hover {
-  background: var(--silver-gradient) !important;
-  border-color: var(--silver-dark) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !important;
-}
+/* Note: Moved to end of file with more specific selectors */
 
 /* === PRODUCT CARD ENHANCEMENTS === */
 
@@ -853,346 +790,152 @@ a:focus-visible {
 }
 
 /* ============================================
-   FORCE SILVER STYLE ON ALL BUTTONS
-   Override all color schemes
+   SILVER BUTTON STYLES - TARGETED SELECTORS
+   Only affects actual CTA buttons, not UI elements
    ============================================ */
 
-/* Force silver on ALL button variations */
-.button,
-button.button,
-a.button,
-.btn,
-button.btn,
-a.btn,
+/* Primary CTA buttons only - explicit selectors */
+.button.button--primary:not(.visually-hidden):not(.faq__list--item__button),
 .shopify-payment-button__button,
-.shopify-payment-button button,
 .product-form__submit,
-.cart__submit,
+.cart__submit-button,
 .cart__checkout-button,
-.customer button,
-form button[type="submit"],
-.form__submit,
-input[type="submit"],
-.add-to-cart,
-.add_to_cart_button,
-button[name="add"],
-.product__submit__add,
-.collection__view-all,
-.collection__view-all a,
-.rich-text .button,
-.banner__button,
-.slideshow__button,
-.hero__button,
-.image-banner .button,
-.multicolumn .button,
-.newsletter__button,
-[class*="button--"],
-[class*="btn-"] {
+input[type="submit"].button,
+a.button.button--primary,
+.hdr_btn_right.button {
   background: var(--silver-gradient) !important;
   background-size: 200% 100% !important;
   border: 1px solid var(--silver-dark) !important;
   color: #1a1a1a !important;
   font-weight: 600 !important;
   transition: all 0.4s var(--transition-smooth) !important;
-  position: relative !important;
-  overflow: hidden !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
 }
 
-/* Hover state for all buttons */
-.button:hover,
-button.button:hover,
-a.button:hover,
-.btn:hover,
-button.btn:hover,
-a.btn:hover,
+/* Hover for primary buttons */
+.button.button--primary:not(.visually-hidden):not(.faq__list--item__button):hover,
 .shopify-payment-button__button:hover,
-.shopify-payment-button button:hover,
 .product-form__submit:hover,
-.cart__submit:hover,
+.cart__submit-button:hover,
 .cart__checkout-button:hover,
-.customer button:hover,
-form button[type="submit"]:hover,
-.form__submit:hover,
-input[type="submit"]:hover,
-.add-to-cart:hover,
-.add_to_cart_button:hover,
-button[name="add"]:hover,
-.product__submit__add:hover,
-.collection__view-all:hover,
-.collection__view-all a:hover,
-.rich-text .button:hover,
-.banner__button:hover,
-.slideshow__button:hover,
-.hero__button:hover,
-.image-banner .button:hover,
-.multicolumn .button:hover,
-.newsletter__button:hover,
-[class*="button--"]:hover,
-[class*="btn-"]:hover {
+input[type="submit"].button:hover,
+a.button.button--primary:hover,
+.hdr_btn_right.button:hover {
   background: var(--silver-gradient-hover) !important;
-  background-size: 200% 100% !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
   border-color: var(--silver-light) !important;
-  color: #1a1a1a !important;
 }
 
-/* Outline/Secondary buttons - keep transparent bg but silver border */
-.button--secondary,
-.btn--secondary,
-.button--outline,
-.btn-outline,
-[class*="button--secondary"],
-[class*="btn--outline"] {
+/* Secondary/Outline buttons */
+.button.button--secondary:not(.visually-hidden) {
   background: transparent !important;
   border: 2px solid var(--silver-primary) !important;
   color: inherit !important;
   box-shadow: none !important;
 }
 
-.button--secondary:hover,
-.btn--secondary:hover,
-.button--outline:hover,
-.btn-outline:hover,
-[class*="button--secondary"]:hover,
-[class*="btn--outline"]:hover {
+.button.button--secondary:not(.visually-hidden):hover {
   background: var(--silver-gradient) !important;
   border-color: var(--silver-dark) !important;
-  color: #1a1a1a !important;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !important;
-}
-
-/* Override Shopify color scheme button colors */
-.color-background-1 .button,
-.color-background-2 .button,
-.color-inverse .button,
-.color-accent-1 .button,
-.color-accent-2 .button,
-[class*="color-scheme"] .button,
-[class*="color-scheme-"] .button {
-  background: var(--silver-gradient) !important;
   color: #1a1a1a !important;
 }
 
 /* ============================================
-   TEXT CONTRAST FIXES FOR IMAGE BACKGROUNDS
-   Ensure text is always readable
+   EXCLUSIONS - Elements that should NOT be styled
    ============================================ */
 
-/* Hero/Banner sections with images - force white text */
-.banner,
-.image-banner,
-.hero,
-.slideshow,
-.slideshow__slide,
-.collection-hero,
-[class*="banner"],
-[class*="hero"] {
-  position: relative;
+/* Keep skip-to-content hidden */
+.skip-to-content-link.visually-hidden {
+  position: absolute !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  background: none !important;
+  box-shadow: none !important;
 }
 
-/* Text overlay on images - force white/light text */
-.banner__content,
-.banner__text,
-.banner__heading,
-.hero__content,
-.hero__text,
-.hero__heading,
-.slideshow__content,
-.slideshow__text,
-.slideshow__heading,
-.image-banner__content,
-.collection-hero__content,
-.banner__box,
-.hero__box,
-.image-with-text-overlay__content,
-[class*="banner__"] h1,
-[class*="banner__"] h2,
-[class*="banner__"] h3,
-[class*="banner__"] p,
-[class*="hero__"] h1,
-[class*="hero__"] h2,
-[class*="hero__"] h3,
-[class*="hero__"] p,
-[class*="slideshow__"] h1,
-[class*="slideshow__"] h2,
-[class*="slideshow__"] h3,
-[class*="slideshow__"] p {
-  color: #ffffff !important;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+/* FAQ buttons - reset to default theme style */
+.faq__list--item__button,
+.faq__list--item--heading,
+button.faq__list--item__button {
+  background: none !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.3) !important;
+  box-shadow: none !important;
+  color: inherit !important;
+  transform: none !important;
+  font-weight: inherit !important;
 }
 
-/* Ensure captions and subtitles are also white */
-.banner__caption,
-.hero__caption,
-.slideshow__caption,
-.caption,
-.banner .caption,
-.hero .caption {
-  color: rgba(255, 255, 255, 0.9) !important;
+.faq__list--item__button:hover,
+.faq__list--item--heading:hover {
+  background: none !important;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
-/* Image overlay to improve text readability */
-.banner__media::after,
-.hero__media::after,
-.slideshow__media::after,
-.image-banner__media::after,
-.collection-hero__media::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.1) 0%,
-    rgba(0, 0, 0, 0.3) 50%,
-    rgba(0, 0, 0, 0.4) 100%
-  );
-  pointer-events: none;
-  z-index: 1;
+/* FAQ icons - ensure they display correctly */
+.faq__button--icon,
+.faq__button--icon svg,
+.faq__button--icon .plus__icon,
+.faq__button--icon .minus__icon {
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  color: currentColor !important;
 }
 
-/* Ensure content is above overlay */
-.banner__content,
-.hero__content,
-.slideshow__content,
-.image-banner__content,
-.collection-hero__content {
-  position: relative;
-  z-index: 2;
+/* Accordion and collapsible elements */
+.accordion__button,
+details summary,
+.collapsible-trigger {
+  background: none !important;
+  box-shadow: none !important;
 }
 
-/* Buttons on dark/image backgrounds - keep silver but ensure visibility */
-.banner .button,
-.hero .button,
-.slideshow .button,
-.image-banner .button,
-.collection-hero .button,
-[class*="banner"] .button,
-[class*="hero"] .button {
-  background: var(--silver-gradient) !important;
-  color: #1a1a1a !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+/* Quantity buttons and small UI buttons */
+.quantity__button,
+.slider-button,
+.swiper-button-next,
+.swiper-button-prev {
+  /* Keep original theme styles */
 }
 
-.banner .button:hover,
-.hero .button:hover,
-.slideshow .button:hover,
-.image-banner .button:hover,
-.collection-hero .button:hover,
-[class*="banner"] .button:hover,
-[class*="hero"] .button:hover {
-  background: var(--silver-gradient-hover) !important;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
-}
+/* ============================================
+   CONTRAST FIXES - Only for specific sections
+   ============================================ */
 
-/* Secondary buttons on dark backgrounds - white outline */
-.banner .button--secondary,
-.hero .button--secondary,
-.slideshow .button--secondary,
-[class*="banner"] .button--secondary,
-[class*="hero"] .button--secondary {
-  background: transparent !important;
-  border: 2px solid rgba(255, 255, 255, 0.8) !important;
-  color: #ffffff !important;
-}
-
-.banner .button--secondary:hover,
-.hero .button--secondary:hover,
-.slideshow .button--secondary:hover,
-[class*="banner"] .button--secondary:hover,
-[class*="hero"] .button--secondary:hover {
-  background: rgba(255, 255, 255, 0.15) !important;
-  border-color: #ffffff !important;
-}
-
-/* Dark color schemes - ensure white text */
-.color-inverse,
-.color-accent-1,
-[class*="scheme-"][style*="background: #1"],
-[class*="scheme-"][style*="background: #2"],
-[class*="scheme-"][style*="background: #0"],
-.gradient--background-inverse {
-  color: #ffffff !important;
-}
-
+/* Dark background sections - white text */
 .color-inverse h1,
 .color-inverse h2,
 .color-inverse h3,
-.color-inverse h4,
 .color-inverse p,
 .color-accent-1 h1,
 .color-accent-1 h2,
 .color-accent-1 h3,
-.color-accent-1 h4,
 .color-accent-1 p {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
-/* Fix for about page and similar sections with images */
-.image-with-text--overlap .image-with-text__media-item::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05));
-  pointer-events: none;
-}
-
-/* Ensure good contrast for counter/stats sections */
-.counter-stats-section,
-.counter__item,
-.counter-number {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Rich text sections on colored backgrounds */
-.rich-text .rich-text__text,
-.rich-text .rich-text__heading {
-  text-shadow: none;
-}
-
-/* When rich text is on dark background */
-.color-inverse .rich-text__text,
-.color-inverse .rich-text__heading,
-.color-accent-1 .rich-text__text,
-.color-accent-1 .rich-text__heading {
-  color: #ffffff !important;
-}
-
-/* ============================================
-   ADDITIONAL SILVER ACCENTS
-   ============================================ */
-
-/* Links with silver hover */
-a:not(.button):not(.btn):hover {
-  color: var(--silver-dark) !important;
-}
-
-/* Social icons silver effect */
-.list-social__link {
-  background: var(--silver-gradient) !important;
-  transition: all 0.3s var(--transition-smooth) !important;
-}
-
-.list-social__link:hover {
-  background: var(--silver-gradient-hover) !important;
-  transform: translateY(-3px) scale(1.05) !important;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15) !important;
-}
-
-/* Tags and labels */
-.tag,
-.label,
-.badge:not(.badge--sale):not(.badge--sold-out) {
+/* Buttons in dark sections - silver style */
+.color-inverse .button.button--primary,
+.color-accent-1 .button.button--primary {
   background: var(--silver-gradient) !important;
   color: #1a1a1a !important;
 }
 
-/* Swatches with silver border on active */
+/* ============================================
+   SILVER ACCENTS - Subtle enhancements
+   ============================================ */
+
+/* Active swatch border */
 .swatch:checked + label,
-.swatch-input:checked + .swatch-label,
-.variant-input:checked + label {
+.swatch-input:checked + .swatch-label {
   border-color: var(--silver-primary) !important;
   box-shadow: 0 0 0 2px var(--silver-light) !important;
 }
