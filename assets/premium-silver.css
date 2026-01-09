@@ -1161,78 +1161,110 @@ details summary,
    1. BREADCRUMB - TRUNCATE LONG TEXT
    ============================================ */
 
-.breadcrumbs__wrapper,
-.breadcrumbs,
-nav[aria-label="breadcrumbs"] {
+/* Breadcrumb container */
+nav[aria-label="breadcrumbs"],
+nav[role="navigation"][aria-label="breadcrumbs"] {
   max-width: 100%;
   overflow: hidden;
 }
 
-.breadcrumbs__list {
+/* Breadcrumb list - flex row */
+.breadcrumbs__list,
+ol.breadcrumbs__list {
+  display: flex !important;
   flex-wrap: nowrap !important;
+  align-items: center;
   overflow: hidden;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
+/* Breadcrumb items */
 .breadcrumbs__item,
-.breadcrumbs__link,
-.breadcrumbs li,
-.breadcrumbs a {
+li.breadcrumbs__item {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 250px;
-  display: inline-block;
+  max-width: 200px;
+  flex-shrink: 1;
 }
 
+/* Last item (product title) - slightly wider */
 .breadcrumbs__item:last-child,
-.breadcrumbs li:last-child {
-  max-width: 300px;
+li.breadcrumbs__item:last-child {
+  max-width: 280px;
+}
+
+/* Links inside breadcrumb */
+.breadcrumbs__item a,
+.breadcrumbs__link,
+li.breadcrumbs__item a {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  max-width: 100%;
 }
 
 @media screen and (max-width: 768px) {
   .breadcrumbs__item,
-  .breadcrumbs__link,
-  .breadcrumbs li,
-  .breadcrumbs a {
-    max-width: 150px;
+  li.breadcrumbs__item {
+    max-width: 120px;
   }
 
   .breadcrumbs__item:last-child,
-  .breadcrumbs li:last-child {
-    max-width: 180px;
+  li.breadcrumbs__item:last-child {
+    max-width: 160px;
   }
 }
 
 /* ============================================
-   2. PRICE - MORE VISIBLE
+   2. PRICE - MORE VISIBLE (override global.css)
    ============================================ */
 
-.price,
-.price__regular,
-.price-item,
-.price-item--regular,
-.product__price,
-.price__container {
+/* Override global.css rgba(var(--color-button)) */
+.price .price-item,
+.price .price-item--regular,
+.price .price-item--sale,
+.price__regular .price-item,
+.price__sale .price-item,
+.product-grid-item__price .price-item,
+.product-grid-item__price .price-item--sale,
+dl .price-item {
   color: #1a1a1a !important;
   font-weight: 700 !important;
 }
 
-.price--on-sale .price-item--regular {
-  color: #6b6b6b !important;
-  text-decoration: line-through;
+/* Sale price - regular crossed out */
+.price--on-sale .price-item--regular,
+.price__compare .price-item--regular {
+  color: #888888 !important;
+  text-decoration: line-through !important;
+  font-weight: 500 !important;
 }
 
+/* Sale price - red accent */
 .price--on-sale .price-item--sale,
 .price__sale .price-item--sale {
   color: #c41e3a !important;
   font-weight: 800 !important;
 }
 
-/* Product page specific price */
-.product__info-wrapper .price,
-.product__info-container .price {
-  font-size: 1.8rem !important;
+/* Product page specific price - larger */
+.product__info-wrapper .price .price-item,
+.product__info-container .price .price-item,
+.product__info-wrapper .price-item--regular,
+.product__info-container .price-item--regular {
+  font-size: 1.6rem !important;
   color: #1a1a1a !important;
+}
+
+/* Sticky bar price */
+.sticky__proudct_title p,
+.product__sticky .price-item {
+  color: #1a1a1a !important;
+  font-weight: 700 !important;
 }
 
 /* ============================================
