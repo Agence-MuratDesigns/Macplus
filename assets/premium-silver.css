@@ -795,8 +795,8 @@ a:focus-visible {
    ============================================ */
 
 /* Primary CTA buttons only - explicit selectors */
+/* Note: shopify-payment-button is styled separately in black at the end of file */
 .button.button--primary:not(.visually-hidden):not(.faq__list--item__button),
-.shopify-payment-button__button,
 .product-form__submit,
 .cart__submit-button,
 .cart__checkout-button,
@@ -814,7 +814,6 @@ a.button.button--primary,
 
 /* Hover for primary buttons */
 .button.button--primary:not(.visually-hidden):not(.faq__list--item__button):hover,
-.shopify-payment-button__button:hover,
 .product-form__submit:hover,
 .cart__submit-button:hover,
 .cart__checkout-button:hover,
