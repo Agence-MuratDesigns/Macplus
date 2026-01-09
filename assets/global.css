@@ -3371,13 +3371,13 @@ sticky-variant-select .select_box, .collection-list__item:not(.collection-card-p
      transition: .3s!important;
 }
 .card--stretch:hover .collection__title {
-    color: #A8A9AD;
+    color: #C9C9C9;
 }
 .collection_list_2_section .collection-list__item .media:hover {
     
 }
 .collection_list_2_section span.collection__product_count.xcvpcount {
-    background: #A8A9AD;
+    background: #C9C9C9;
     color: #fff;
     padding: 0px 7px;
     border-radius: 4px;
@@ -3620,7 +3620,7 @@ span.announcement__text_inner.text img.scrolling__image {
 mark.custom-mark-2 {
     padding: 3px 13px;
     margin-right: 7px;
-    background: #A8A9AD;
+    background: #C9C9C9;
     color: #fff;
    border-radius: 2px !important;
 }
