@@ -1161,108 +1161,145 @@ details summary,
    1. BREADCRUMB - TRUNCATE LONG TEXT
    ============================================ */
 
-/* Breadcrumb container */
+/* Breadcrumb wrapper container */
+.breadcrumbs__wrapper,
 nav[aria-label="breadcrumbs"],
 nav[role="navigation"][aria-label="breadcrumbs"] {
-  max-width: 100%;
-  overflow: hidden;
+  max-width: 100% !important;
+  overflow: hidden !important;
 }
 
-/* Breadcrumb list - flex row */
+/* Breadcrumb list - ensure flex doesn't wrap */
 .breadcrumbs__list,
-ol.breadcrumbs__list {
+ol.breadcrumbs__list,
+.breadcrumbs__list.d-flex,
+ol.breadcrumbs__list.d-flex {
   display: flex !important;
   flex-wrap: nowrap !important;
-  align-items: center;
-  overflow: hidden;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  align-items: center !important;
+  overflow: hidden !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: 100% !important;
 }
 
-/* Breadcrumb items */
+/* Breadcrumb items - truncate text */
 .breadcrumbs__item,
-li.breadcrumbs__item {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 200px;
-  flex-shrink: 1;
+li.breadcrumbs__item,
+.breadcrumbs__list .breadcrumbs__item,
+ol.breadcrumbs__list li.breadcrumbs__item {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 180px !important;
+  flex-shrink: 1 !important;
+  min-width: 0 !important; /* Required for text-overflow to work in flex items */
 }
 
-/* Last item (product title) - slightly wider */
+/* Last item (product/page title) - slightly wider but still truncated */
 .breadcrumbs__item:last-child,
-li.breadcrumbs__item:last-child {
-  max-width: 280px;
+li.breadcrumbs__item:last-child,
+.breadcrumbs__list .breadcrumbs__item:last-child,
+ol.breadcrumbs__list li.breadcrumbs__item:last-child {
+  max-width: 250px !important;
 }
 
-/* Links inside breadcrumb */
+/* Links and text inside breadcrumb items - inherit truncation */
 .breadcrumbs__item a,
 .breadcrumbs__link,
-li.breadcrumbs__item a {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: block;
-  max-width: 100%;
+li.breadcrumbs__item a,
+.breadcrumbs__item > a,
+li.breadcrumbs__item > a {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: block !important;
+  max-width: 100% !important;
 }
 
+/* Plain text in last breadcrumb (not a link) */
+.breadcrumbs__item:last-child,
+li.breadcrumbs__item:last-child {
+  display: block !important;
+}
+
+/* Mobile - smaller max-widths */
 @media screen and (max-width: 768px) {
   .breadcrumbs__item,
-  li.breadcrumbs__item {
-    max-width: 120px;
+  li.breadcrumbs__item,
+  .breadcrumbs__list .breadcrumbs__item {
+    max-width: 100px !important;
   }
 
   .breadcrumbs__item:last-child,
   li.breadcrumbs__item:last-child {
-    max-width: 160px;
+    max-width: 140px !important;
   }
 }
 
 /* ============================================
    2. PRICE - MORE VISIBLE (override global.css)
+   global.css line 3192 sets .price { color: rgba(var(--color-button)) !important }
+   We need to override this cascade by resetting on .price AND styling children
    ============================================ */
 
-/* Override global.css rgba(var(--color-button)) */
-.price .price-item,
-.price .price-item--regular,
-.price .price-item--sale,
-.price__regular .price-item,
-.price__sale .price-item,
-.product-grid-item__price .price-item,
-.product-grid-item__price .price-item--sale,
-dl .price-item {
+/* FIRST: Reset the cascade on .price container itself */
+div.price,
+.price,
+.product-grid-item__price {
+  color: #1a1a1a !important;
+}
+
+/* SECOND: Style price items with ultra-specific selectors */
+div.price span.price-item,
+div.price span.price-item--regular,
+div.price span.price-item--sale,
+.price dl dd span.price-item,
+.price .price__regular span.price-item,
+.price .price__sale span.price-item,
+.price span.price-item.price-item--regular,
+.price span.price-item.price-item--sale,
+.product-grid-item__price span.price-item,
+.product-grid-item__price span.price-item--sale {
   color: #1a1a1a !important;
   font-weight: 700 !important;
 }
 
 /* Sale price - regular crossed out */
-.price--on-sale .price-item--regular,
-.price__compare .price-item--regular {
+div.price.price--on-sale span.price-item--regular,
+.price--on-sale span.price-item--regular,
+.price--on-sale s.price-item--regular,
+.price__compare s.price-item--regular,
+div.price .price__compare span.price-item--regular,
+div.price .price__compare s.price-item--regular {
   color: #888888 !important;
   text-decoration: line-through !important;
   font-weight: 500 !important;
 }
 
-/* Sale price - red accent */
-.price--on-sale .price-item--sale,
-.price__sale .price-item--sale {
+/* Sale price - red accent for discounted price */
+div.price.price--on-sale span.price-item--sale,
+.price--on-sale span.price-item--sale,
+div.price .price__sale span.price-item--sale,
+.price__sale dd span.price-item--sale {
   color: #c41e3a !important;
   font-weight: 800 !important;
 }
 
 /* Product page specific price - larger */
-.product__info-wrapper .price .price-item,
-.product__info-container .price .price-item,
-.product__info-wrapper .price-item--regular,
-.product__info-container .price-item--regular {
+.product__info-wrapper div.price span.price-item,
+.product__info-container div.price span.price-item,
+.product__info-wrapper .price span.price-item--regular,
+.product__info-container .price span.price-item--regular {
   font-size: 1.6rem !important;
   color: #1a1a1a !important;
 }
 
 /* Sticky bar price */
 .sticky__proudct_title p,
-.product__sticky .price-item {
+.product__sticky span.price-item,
+.product__sticky div.price span.price-item {
   color: #1a1a1a !important;
   font-weight: 700 !important;
 }
@@ -1271,43 +1308,84 @@ dl .price-item {
    3. SECONDARY PRODUCT PHOTOS - FILL FRAMES
    ============================================ */
 
-/* Product thumbnail gallery */
+/* Product main media gallery items */
 .product__media-list .product__media-item,
-.thumbnail-list .thumbnail,
-.product__media-gallery .thumbnail,
-.slider__slide .product__media-item {
-  overflow: hidden;
-  border-radius: 8px;
+.slider__slide .product__media-item,
+.product__media-item.slider__slide {
+  overflow: hidden !important;
+  border-radius: 8px !important;
 }
 
-.product__media-list img,
-.thumbnail-list img,
-.thumbnail img,
+/* Main product images - use object-fit cover */
 .product__media-item img,
-.product-single__thumbnails img,
-.product__media-gallery img {
+.product__media-list img,
+.product__media.media img,
+.product__media-item .product__media img,
+.product__modal-opener img,
+div.product__media img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
   object-position: center center !important;
 }
 
-/* Thumbnail containers */
-.thumbnail,
-.thumbnail-list__item,
-.product__media-toggle {
-  aspect-ratio: 1/1;
-  overflow: hidden;
-  border-radius: 8px;
-  background: #f8f8f8;
+/* Thumbnail list containers */
+.thumbnail-slider,
+#GalleryThumbnails ul.thumbnail-list,
+ul.thumbnail-list {
+  display: flex !important;
+  gap: 8px !important;
 }
 
-/* Active thumbnail border */
+/* Thumbnail list items - square aspect */
+.thumbnail-list__item,
+li.thumbnail-list__item,
+.thumbnail-list__item.slider__slide {
+  aspect-ratio: 1/1 !important;
+  overflow: hidden !important;
+  border-radius: 8px !important;
+  flex-shrink: 0 !important;
+  background: #f8f8f8 !important;
+}
+
+/* Thumbnail button - fill its container */
+button.thumbnail,
+.thumbnail-list__item button.thumbnail,
+.thumbnail-list__item .thumbnail {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  aspect-ratio: 1/1 !important;
+  overflow: hidden !important;
+  border-radius: 8px !important;
+  border: 2px solid transparent !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* Thumbnail images - fill and cover */
+button.thumbnail img,
+.thumbnail-list__item img,
+.thumbnail-list__item button.thumbnail img,
+.thumbnail img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+
+/* Active thumbnail state */
+button.thumbnail[aria-current="true"],
+.thumbnail-list__item button.thumbnail[aria-current="true"],
 .thumbnail.is-active,
-.thumbnail--active,
-.product__media-toggle.is-active {
-  border: 2px solid var(--silver-primary) !important;
+.thumbnail--active {
+  border-color: var(--silver-primary) !important;
   box-shadow: 0 0 0 2px var(--silver-light) !important;
+}
+
+/* Thumbnail hover state */
+button.thumbnail:hover,
+.thumbnail-list__item:hover button.thumbnail {
+  border-color: var(--silver-dark) !important;
 }
 
 /* ============================================
@@ -1376,52 +1454,72 @@ dl .price-item {
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-/* Add subtle entrance animations */
+/* Add subtle entrance animations - with JS fallback */
 .product__title {
   animation: fadeSlideUp 0.6s ease 0.1s forwards;
-  opacity: 0;
 }
 
 .product__price {
   animation: fadeSlideUp 0.6s ease 0.2s forwards;
-  opacity: 0;
 }
 
+/* Don't animate product-form to avoid hiding Buy buttons */
 .product-form {
-  animation: fadeSlideUp 0.6s ease 0.3s forwards;
-  opacity: 0;
+  animation: fadeSlideUp 0.4s ease forwards;
 }
 
 /* ============================================
    5. STICKY BAR - BALANCED BUTTONS
    ============================================ */
 
+/* Sticky bar container styling */
+.product__sticky {
+  background: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Sticky bar product title and image */
+.product__sticky .sticky__proudct_title {
+  font-weight: 600 !important;
+  color: #1a1a1a !important;
+}
+
+.product__sticky .sticky__proudct_title p {
+  color: #1a1a1a !important;
+  font-weight: 700 !important;
+  margin-top: 4px !important;
+}
+
 /* Make Add to Cart button same size as Buy Now */
 .sticky__form_button .product__add__cart__button .button,
-.sticky__form_button .product__add__cart__button button {
+.sticky__form_button .product__add__cart__button button.button,
+.sticky__form_button .product__add__cart__button button.button--primary,
+.product__sticky .sticky__form_button button[type="submit"] {
   padding: 14px 28px !important;
   font-size: 1rem !important;
   font-weight: 600 !important;
   min-width: 160px !important;
   text-transform: uppercase !important;
   letter-spacing: 0.5px !important;
+  height: 50px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
-/* Buy Now button in sticky bar */
+/* Buy Now button in sticky bar - match Add to Cart */
 .sticky__form_button .shopify-payment-button .shopify-payment-button__button,
-.sticky__form_button .shopify-payment-button__button {
+.sticky__form_button .shopify-payment-button__button,
+.product__sticky .shopify-payment-button__button,
+.product__sticky .shopify-payment-button .shopify-payment-button__button {
   padding: 14px 28px !important;
   font-size: 1rem !important;
   font-weight: 600 !important;
   min-width: 160px !important;
   letter-spacing: 0.5px !important;
-}
-
-/* Ensure both buttons have same height */
-.sticky__form_button .button,
-.sticky__form_button .shopify-payment-button__button {
   height: 50px !important;
-  display: flex !important;
+  display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
 }
@@ -1429,7 +1527,9 @@ dl .price-item {
 /* Responsive sticky buttons */
 @media screen and (max-width: 991px) {
   .sticky__form_button .product__add__cart__button .button,
-  .sticky__form_button .shopify-payment-button__button {
+  .sticky__form_button .product__add__cart__button button,
+  .sticky__form_button .shopify-payment-button__button,
+  .product__sticky .shopify-payment-button__button {
     padding: 12px 20px !important;
     font-size: 0.9rem !important;
     min-width: 130px !important;
@@ -1439,10 +1539,19 @@ dl .price-item {
 
 @media screen and (max-width: 767px) {
   .sticky__form_button .product__add__cart__button .button,
-  .sticky__form_button .shopify-payment-button__button {
+  .sticky__form_button .product__add__cart__button button,
+  .sticky__form_button .shopify-payment-button__button,
+  .product__sticky .shopify-payment-button__button {
     padding: 10px 16px !important;
     font-size: 0.85rem !important;
     min-width: 110px !important;
     height: 42px !important;
+  }
+
+  /* On very small screens, flex the buttons properly */
+  .sticky__form_button.d-flex {
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
   }
 }
