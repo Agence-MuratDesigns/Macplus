@@ -2815,8 +2815,8 @@ sticky-variant-select .select_box {
     box-shadow: none !important;
 }
 #scroll__top {
-    background-color: #51ade5 !important;
-    border: 1px solid #51ade5 !important;
+    background-color: #8C8C8C !important;
+    border: 1px solid #8C8C8C !important;
     color: rgb(var(--color-button-text));
     border-radius: 50% !important;
     padding: 12px;
@@ -2863,20 +2863,20 @@ p.trustshop-header--title.trustshop.trustshop-title {
     margin-bottom: 42px!important;
 }
 .placeholder_svg_parent {
-    background: #51ade5!important;
+    background: #8C8C8C!important;
     color: #fff;
     border-radius: 15px;
 }
 .placeholder {
     fill: #fff!important;
-    background: #51ade5!important;
+    background: #8C8C8C!important;
     border-radius: 15px;
 }
 svg.placeholder-svg {
     fill: #fff!important;
 }
 .deferred-media__poster {
-    background-color: #51ade5!important;
+    background-color: #8C8C8C!important;
 }
 .deferred-media__poster svg.placeholder {
     fill: #fff!important;
@@ -3185,7 +3185,7 @@ a.button.button--medium.button--secondary span.right__btn_svg {
     display: none;
 }
 .blank_img {
-    background: #51ade5 !important;
+    background: #8C8C8C !important;
     border-radius: 10px;
 }
 
@@ -3371,13 +3371,13 @@ sticky-variant-select .select_box, .collection-list__item:not(.collection-card-p
      transition: .3s!important;
 }
 .card--stretch:hover .collection__title {
-    color: #00D1FF;
+    color: #A8A9AD;
 }
 .collection_list_2_section .collection-list__item .media:hover {
     
 }
 .collection_list_2_section span.collection__product_count.xcvpcount {
-    background: #00D1FF;
+    background: #A8A9AD;
     color: #fff;
     padding: 0px 7px;
     border-radius: 4px;
@@ -3620,7 +3620,7 @@ span.announcement__text_inner.text img.scrolling__image {
 mark.custom-mark-2 {
     padding: 3px 13px;
     margin-right: 7px;
-    background: #00D1FF;
+    background: #A8A9AD;
     color: #fff;
    border-radius: 2px !important;
 }
