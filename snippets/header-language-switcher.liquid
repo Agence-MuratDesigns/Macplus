@@ -1,0 +1,62 @@
+{%- comment -%}
+  Renders a compact language switcher for the header
+  Shows FR/EN toggle button with dropdown
+{%- endcomment -%}
+
+{%- if localization.available_languages.size > 1 -%}
+<localization-form class="header-language-switcher">
+  {%- form 'localization', id: 'HeaderLanguageForm', class: 'header-language-form' -%}
+    <div class="language-switcher no-js-hidden">
+      <button
+        type="button"
+        class="language-switcher__button"
+        aria-expanded="false"
+        aria-controls="HeaderLanguageList"
+        aria-label="{{ 'localization.language_label' | t }}"
+      >
+        <span class="language-switcher__current">
+          {%- if localization.language.iso_code == 'fr' -%}
+            FR
+          {%- elsif localization.language.iso_code == 'en' -%}
+            EN
+          {%- else -%}
+            {{ localization.language.iso_code | upcase }}
+          {%- endif -%}
+        </span>
+        <svg class="language-switcher__icon" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div id="HeaderLanguageList" class="disclosure__list-wrapper language-switcher__dropdown" hidden>
+        <ul role="list" class="language-switcher__list">
+          {%- for language in localization.available_languages -%}
+            <li class="language-switcher__item">
+              <a
+                class="language-switcher__link{% if language.iso_code == localization.language.iso_code %} language-switcher__link--active{% endif %}"
+                href="#"
+                hreflang="{{ language.iso_code }}"
+                lang="{{ language.iso_code }}"
+                {% if language.iso_code == localization.language.iso_code %}aria-current="true"{% endif %}
+                data-value="{{ language.iso_code }}"
+              >
+                <span class="language-switcher__flag">
+                  {%- if language.iso_code == 'fr' -%}
+                    🇫🇷
+                  {%- elsif language.iso_code == 'en' -%}
+                    🇬🇧
+                  {%- else -%}
+                    🌐
+                  {%- endif -%}
+                </span>
+                <span class="language-switcher__name">{{ language.endonym_name }}</span>
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+    <input type="hidden" name="locale_code" value="{{ localization.language.iso_code }}">
+  {%- endform -%}
+</localization-form>
+{%- endif -%}

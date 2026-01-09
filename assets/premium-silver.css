@@ -1155,6 +1155,53 @@ details summary,
     padding: 10px 16px !important;
     font-size: 0.9rem !important;
   }
+
+  .product__sticky_head {
+    max-width: 200px !important;
+  }
+
+  .sticky_pro_img {
+    width: 45px !important;
+    height: 45px !important;
+    min-width: 45px !important;
+  }
+
+  .sticky__proudct_title {
+    font-size: 0.85rem !important;
+    padding-inline-start: 10px !important;
+  }
+}
+
+/* Very small mobile - stack vertically */
+@media screen and (max-width: 480px) {
+  .product__sticky {
+    flex-direction: column !important;
+    padding: 10px !important;
+    gap: 10px !important;
+  }
+
+  .product__sticky_head {
+    max-width: 100% !important;
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .sticky__form_button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .sticky__form_button .button,
+  .sticky__form_button .shopify-payment-button__button {
+    min-width: auto !important;
+    flex: 1 !important;
+    max-width: 45% !important;
+  }
+
+  .product__sticky_variant {
+    padding: 0 !important;
+    width: 100% !important;
+  }
 }
 
 /* ============================================
@@ -1544,7 +1591,7 @@ button.thumbnail:hover,
   .product__sticky .shopify-payment-button__button {
     padding: 10px 16px !important;
     font-size: 0.85rem !important;
-    min-width: 110px !important;
+    min-width: 100px !important;
     height: 42px !important;
   }
 
@@ -1553,5 +1600,129 @@ button.thumbnail:hover,
     gap: 10px !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sticky__form_button .product__add__cart__button .button,
+  .sticky__form_button .product__add__cart__button button,
+  .sticky__form_button .shopify-payment-button__button,
+  .product__sticky .shopify-payment-button__button {
+    padding: 8px 12px !important;
+    font-size: 0.8rem !important;
+    min-width: auto !important;
+    height: 40px !important;
+    flex: 1 !important;
+  }
+}
+
+/* ============================================
+   LANGUAGE SWITCHER - HEADER
+   ============================================ */
+
+.header-language-switcher {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.language-switcher__button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  background: transparent;
+  border: 1px solid rgba(var(--color-foreground), 0.2);
+  border-radius: 6px;
+  color: rgba(var(--color-foreground), 1);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.language-switcher__button:hover {
+  background: rgba(var(--color-foreground), 0.05);
+  border-color: rgba(var(--color-foreground), 0.3);
+}
+
+.language-switcher__current {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.language-switcher__icon {
+  transition: transform 0.3s ease;
+}
+
+.language-switcher__button[aria-expanded="true"] .language-switcher__icon {
+  transform: rotate(180deg);
+}
+
+.language-switcher__dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 150px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  overflow: hidden;
+}
+
+.language-switcher__list {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.language-switcher__item {
+  margin: 0;
+}
+
+.language-switcher__link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.language-switcher__link:hover {
+  background: #f5f5f5;
+}
+
+.language-switcher__link--active {
+  background: linear-gradient(135deg, rgba(201, 201, 201, 0.2), rgba(154, 154, 154, 0.1));
+  font-weight: 600;
+}
+
+.language-switcher__flag {
+  font-size: 1.2rem;
+}
+
+.language-switcher__name {
+  flex: 1;
+}
+
+/* Mobile responsive */
+@media screen and (max-width: 767px) {
+  .header-language-switcher {
+    margin-right: 4px;
+  }
+
+  .language-switcher__button {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+  }
+
+  .language-switcher__dropdown {
+    right: -10px;
+    min-width: 140px;
   }
 }

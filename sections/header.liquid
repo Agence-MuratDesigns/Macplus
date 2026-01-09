@@ -634,6 +634,9 @@
             {%- endif -%}
           {%- endif -%}
 
+          {%- comment -%} Language Switcher {%- endcomment -%}
+          {% render 'header-language-switcher' %}
+
           {% if section.settings.show_search and section.settings.logo_position != 'middle_left_search_inline_expend' %}
             <button
               id="header_search__action"
